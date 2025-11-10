@@ -1,80 +1,61 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>核试验时间轴可视化 - 最终全屏固定版</title>
-    <style>
-        /* CSS 确保全屏和滚动区的分离 */
-        body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden; /* 防止主页面出现不必要的滚动条 */
-            background-color: #f0f0f0;
-        }
-        /* 迷你导航条容器（固定在顶部，全屏宽度） */
-        #nav-container {
-            position: fixed;
-            top: 0; 
-            left: 0;
-            width: 100vw; 
-            height: 40px; 
-            z-index: 1000; 
-            background-color: #e0e0e0;
-            border-bottom: 1px solid #ccc;
-        }
-        /* P5.js 主画布容器（固定在顶部以下）*/
-        #main-canvas-container {
-            position: absolute;
-            top: 40px; /* 往下推 40px，避开导航条 */
-            left: 0;
-            width: 100vw;
-            /* z-index 在 sketch.js setup 中设置 */
-        }
-        /* 时间轴滚动容器（固定在底部） */
-        #timeline-container {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100vw; 
-            height: 250px; /* 预留给时间轴的高度 */
-            overflow-x: scroll; /* 核心：左右滚动 */
-            overflow-y: hidden;
-            z-index: 900; /* 低于画布和导航栏，但高于 body */
-            padding-bottom: 20px; /* 为滚动条留出空间 */
-        }
-        /* 时间轴内部的事件内容 */
-        #timeline-events {
-            height: 100%;
-            position: relative;
-        }
-        /* 时间轴事件标签的样式 */
-        .event-label {
-            position: absolute;
-            text-align: center;
-            font-size: 10px;
-            cursor: pointer;
-            padding: 2px 4px;
-            border-radius: 3px;
-            color: #000;
-            transition: background-color 0.1s;
-            line-height: 1.2; 
-        }
-        .event-label:hover {
-            color: #ff6600; 
-        }
-    </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-    <script src="sketch.js"></script>
-</head>
-<body>
-    <div id="nav-container"></div>
-    
-    <div id="main-canvas-container"></div>
-    <div id="timeline-container">
-        <div id="timeline-events"></div>
-    </div>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>核试验时间轴可视化 - 最终全屏固定版</title>
 
-    
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #f0f0f0;
+    }
+    #nav-container {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 40px;
+      z-index: 1000; background-color: #e0e0e0;
+      border-bottom: 1px solid #ccc;
+    }
+    #main-canvas-container {
+      position: absolute;
+      top: 40px; left: 0;
+      width: 100vw;
+    }
+    #timeline-container {
+      position: fixed;
+      bottom: 0; left: 0;
+      width: 100vw; height: 250px;
+      overflow-x: scroll; overflow-y: hidden;
+      z-index: 900; padding-bottom: 20px;
+    }
+    #timeline-events {
+      height: 100%;
+      position: relative;
+    }
+    .event-label {
+      position: absolute; text-align: center;
+      font-size: 10px; cursor: pointer;
+      padding: 2px 4px; border-radius: 3px;
+      color: #000; transition: background-color 0.1s;
+      line-height: 1.2;
+    }
+    .event-label:hover { color: #ff6600; }
+  </style>
+
+  <!-- ✅ p5.js 最新版本（带 DOM 支持） -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/addons/p5.dom.min.js"></script>
+  <script src="sketch.js"></script>
+</head>
+
+<body>
+  <div id="nav-container"></div>
+  <div id="main-canvas-container"></div>
+  <div id="timeline-container">
+    <div id="timeline-events"></div>
+  </div>
 </body>
 </html>
